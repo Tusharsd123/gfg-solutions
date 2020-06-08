@@ -49,3 +49,29 @@ int isBSTUtil(node* node, int min, int max)
         isBSTUtil(node->left, min, node->data-1) && // Allow only distinct values  
         isBSTUtil(node->right, node->data+1, max); // Allow only distinct values  
 }  
+
+//inorder traversal approach
+//inorder traversal gives a sorted array. Comparing the elements for their previous node helps here to solve the problem.
+bool isBST(node* root)  
+{  
+    static node *prev = NULL;  //made static so that the function can retain that value.
+      
+    // traverse the tree in inorder fashion  
+    // and keep track of prev node  
+    if (root)  
+    {  
+        if (!isBST(root->left))  
+        return false;  
+  
+        // Allows only distinct valued nodes  
+        if (prev != NULL &&  
+            root->data <= prev->data)  
+        return false;  
+  
+        prev = root;  
+  
+        return isBST(root->right);  
+    }  
+  
+    return true;  
+}  
