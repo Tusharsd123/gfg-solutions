@@ -1,52 +1,29 @@
 //to avoid printing duplicate common elements we use hashmaps. Since all arrays are sorted so we can use a 
 //two pointer technique
 
-#include <bits/stdc++.h>
-using namespace std;
-int min(int x,int y)
-{
-    return x>y?y:x;
-}
-int main() {
-	int t;
-	cin>>t;
-	while(t--)
-	{
-	    unordered_map<int,int> mp;
-	    int n1,n2,n3;
-	    cin>>n1>>n2>>n3;
-	    int a[n1],b[n2],c[n3];
-	    for(int i = 0;i<n1;i++)
-	    {
-	        cin>>a[i];
-	    }
-	    for(int i = 0;i<n2;i++)
-	    {
-	        cin>>b[i];
-	    }
-	    for(int i = 0;i<n3;i++)
-	    {
-	        cin>>c[i];
-	    }
-	    int ans = 0;
-	    int a_start=0;
-	    int b_start=0;
-	    int c_start=0;
-	    while(a_start<n1 && b_start<n2 && c_start<n3)
-	    {
-	        if(min(c[c_start],min(a[a_start],b[b_start]))==c[c_start])
-	            c_start++;
-	       if(min(a[a_start],min(c[c_start],b[b_start]))==a[a_start])  
-	           a_start++;
-	       if(min(b[b_start],min(a[a_start],c[c_start]))==b[b_start])
-	            b_start++;
-	       if(a[a_start]==b[b_start] && b[b_start]==c[c_start])
-	            { if(mp.find(a[a_start])!=mp.end())
-	                   {  cout<<ans<<" ";
-	                      mp[a[a_start]]++;
-	                   }
-	            }        
-	    }
-	}
-	return 0;
-}
+void findCommon(int ar1[], int ar2[], int ar3[], int n1, int n2, int n3) 
+{ 
+    // Initialize starting indexes for ar1[], ar2[] and ar3[] 
+    int i = 0, j = 0, k = 0; 
+  
+    // Iterate through three arrays while all arrays have elements 
+    while (i < n1 && j < n2 && k < n3) 
+    { 
+         // If x = y and y = z, print any of them and move ahead  
+         // in all arrays 
+         if (ar1[i] == ar2[j] && ar2[j] == ar3[k]) 
+         {   cout << ar1[i] << " ";   i++; j++; k++; } 
+  
+         // x < y 
+         else if (ar1[i] < ar2[j]) 
+             i++; 
+  
+         // y < z 
+         else if (ar2[j] < ar3[k]) 
+             j++; 
+  
+         // We reach here when x > y and z < y, i.e., z is smallest 
+         else
+             k++; 
+    } 
+} 
