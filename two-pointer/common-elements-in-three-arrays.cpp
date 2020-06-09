@@ -34,11 +34,11 @@ int main() {
 	    int c_start=0;
 	    while(a_start<n1 && b_start<n2 && c_start<n3)
 	    {
-	        if(min(c[c_start],min(a[a_start],b[b_start])))
+	        if(min(c[c_start],min(a[a_start],b[b_start]))==c[c_start])
 	            c_start++;
-	       if(min(a[a_start],min(c[c_start],b[b_start])))  
+	       if(min(a[a_start],min(c[c_start],b[b_start]))==a[a_start])  
 	           a_start++;
-	       if(min(b[b_start],min(a[a_start],c[c_start])))
+	       if(min(b[b_start],min(a[a_start],c[c_start]))==b[b_start])
 	            b_start++;
 	       if(a[a_start]==b[b_start] && b[b_start]==c[c_start])
 	            { if(mp.find(a[a_start])!=mp.end())
