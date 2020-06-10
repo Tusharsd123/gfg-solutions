@@ -2,7 +2,7 @@
 //previously made in shorter lengths, this question could be solved by the approach of Dynamic Programming. Suppose we 
 //are given a length ‘l’. For finding the maximum number of cuts that can be made in length ‘l’, find number of cuts made 
 //in shorter previous length ‘l-p’,’l-q’,’l-r’ lengths respectively. The required answer would be the max(l-p,l-q,l-r)+1 as
-one more cut should be needed after this to cut length ‘l’. So for solving this problem for given length, find maximum number
+//one more cut should be needed after this to cut length ‘l’. So for solving this problem for given length, find maximum number
 //of cuts that can be made in lengths ranging from ‘1’ to ‘l’.
 
 
